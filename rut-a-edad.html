@@ -31,7 +31,7 @@
 
   </style>
 
-  <title>Obtener la Edad de una Persona con su RUT</title>
+  <title>Obtener la Edad y Fecha de Nacimiento con RUT</title>
 </head>
 
 <body>
@@ -88,11 +88,11 @@
       var intercept = 1932.2573852507373
       var birth_date = rut * slope + intercept
       var birth_date_year = Math.floor(birth_date)
-      var birth_date_month = Math.round((birth_date - birth_date_year) * 12)
+      var birth_date_month = Math.ceil((birth_date - birth_date_year) * 12)
       birth_date = new Date(birth_date_year, birth_date_month)
       var age = today_date.getTime() - birth_date.getTime()
       age = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25))
-      return age
+      return [age, birth_date_month, birth_date_year]
     }
     var button = document.getElementById("button");
     var age = document.getElementById("age");
@@ -100,8 +100,9 @@
     button.addEventListener("click", function() {
 
       var rut = +document.getElementById("rut").value
+      var months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 
-      age.innerHTML = 'El RUT ' + rut + ' tiene ' + '<strong>' + getAgeFromRUT(rut) + '</strong>' + ' años';
+      age.innerHTML = 'El RUT ' + rut + ' tiene ' + '<strong>' + getAgeFromRUT(rut)[0] + '</strong>' + ' años y nació en ' + months[getAgeFromRUT(rut)[1] - 1] + ' de ' + getAgeFromRUT(rut)[2];
     });
   </script>
 </body>
