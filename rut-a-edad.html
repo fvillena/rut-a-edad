@@ -8,22 +8,71 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style media="screen">
+
+  html,
+  body{
+   height: 100%;
+  }
+
+  #cover {
+    background: #222 url('') center center no-repeat;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+
+  #cover-caption {
+    width: 100%;
+  }
+
+  </style>
 
   <title>Obtener la Edad de una Persona con su RUT</title>
 </head>
 
 <body>
-  <div class="container-fluid">
+  <!-- <div class="container-fluid text-center pagination-centered center-block">
     <h1>Obtener la Edad de una Persona con su RUT</h1>
-    <div id="age"> </div>
-    <form>
-      <div class="form-group form-inline">
-        <input class="form-control" id="rut" placeholder="Ingresar RUT">
-      </div>
-    </form>
+    <p id="age"> </p>
+    <div class="center-block text-center">
+    <input class="form-control w-25 form-inline" id="rut" placeholder="Ingresar RUT" >
+  </div>
+    <br>
     <button id="button" type="submit" class="btn btn-primary">Obtener Edad</button>
 
-  </div>
+  </div> -->
+
+
+  <section id="cover">
+    <div id="cover-caption">
+        <div id="container" class="container">
+            <div class="row text-white">
+                <div class="col-sm-6 offset-sm-3 text-center">
+                    <h1 class="display-4">RUT a Edad</h1>
+                    <p id="age"> </p>
+                    <div class="info-form">
+
+                            <div class="form-group">
+                                <label class="sr-only">RUT</label>
+                                <input id="rut" type="text" class="form-control" placeholder="RUT">
+                                <small class="form-text text-muted ">Ingrese RUT sin dígito verificador (12345678)</small>
+
+                            </div>
+
+                            <button id="button" type="submit" class="btn btn-primary ">Obtener Edad</button>
+
+                    </div>
+                    <br>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
   <!-- Optional JavaScript -->
@@ -51,7 +100,7 @@
 
       var rut = +document.getElementById("rut").value
 
-      age.innerHTML = getAgeFromRUT(rut) + ' años';
+      age.innerHTML = 'El RUT ' + rut + ' tiene ' + '<strong>' + getAgeFromRUT(rut) + '</strong>' + ' años';
     });
   </script>
 </body>
